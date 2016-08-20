@@ -1,0 +1,25 @@
+{
+  "name": "ng-bootstrap-pagination",
+  "version": "0.0.0",
+  "description": "angularjs bootstrap pagination",
+  "main": "pagination.js",
+  "repository": "attrs/ng-bootstrap-pagination",
+  "author": "joje <joje.attrs@gmail.com>",
+  "homepage": "https://github.com/attrs/ng-bootstrap-pagination",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "directives",
+    "pagination",
+    "bootstrap"
+  ],
+  "files": [
+    "*.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "angular": "^1.5.8"
+  }
+}
