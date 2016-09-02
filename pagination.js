@@ -1,4 +1,4 @@
-module.exports = function(options) {
+var fn = function(options) {
   options = options || {};
   var tpl = options.tpl || '<nav>\
     <ul class="pagination mv0">\
@@ -105,3 +105,8 @@ module.exports = function(options) {
     };
   }];
 };
+
+var app = angular.module('ngBootstrapPagination', [])
+.directive('pagination', fn());
+
+module.exports = fn;
