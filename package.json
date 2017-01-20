@@ -1,6 +1,6 @@
 {
   "name": "ng-bootstrap-pagination",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "angularjs bootstrap pagination",
   "main": "pagination.js",
   "repository": "attrs/ng-bootstrap-pagination",
