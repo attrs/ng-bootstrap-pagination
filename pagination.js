@@ -1,5 +1,3 @@
-console.log('!!');
-
 var fn = function(options) {
   options = options || {};
   
