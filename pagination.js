@@ -1,6 +1,9 @@
+console.log('!!');
+
 var fn = function(options) {
   options = options || {};
-  var tpl = options.tpl || '<nav>\
+  
+  var defaultTpl = '<nav>\
     <ul class="pagination mv0">\
       <li ng-class="prevable ? \'\' : \'disabled\'">\
         <a href="" aria-label="Previous" ng-click="prev()">\
@@ -22,7 +25,7 @@ var fn = function(options) {
   
   return ['$templateCache', function ($templateCache) {
     return {
-      template: tpl,
+      template: options.tpl || $templateCache.get('ng-bootstrap-pagination') || defaultTpl,
       replace: false,
       restrict: 'E',
       link: function($scope, $element, $attrs, ctrl) {
@@ -32,15 +35,15 @@ var fn = function(options) {
         $scope.curr = 0;
         $scope.total = 0;
         var set_count = +($attrs.setCount || defaultSetCount);
-      
+        
         var render = function() {
           var paging = $scope.paging = $scope.$eval(ngModel);
-        
+          
           if( paging ) {
             var total = paging.total;
             var offset = paging.offset;
             var limit = paging.limit;
-          
+            
             var prevable = offset > 0;
             var nextable = (offset + limit) < total;
             var curr = (Math.floor(offset / limit) + 1) || 1;
@@ -49,7 +52,7 @@ var fn = function(options) {
             var set_index = Math.floor((curr - 1) / set_count) + 1;
             var start_page = (set_index * set_count) - set_count + 1;
             var end_page = (set_index * set_count);
-          
+            
             for(var i=start_page; i <= end_page; i++) {
               if( i > total ) break;
               pages.push({
@@ -57,7 +60,7 @@ var fn = function(options) {
                 page: i
               });
             }
-          
+            
             $scope.prevable = prevable;
             $scope.nextable = nextable;
             $scope.curr = curr;
@@ -77,29 +80,31 @@ var fn = function(options) {
             $scope.end_page = 1;
           }
         };
-      
+        
         $scope.next = function() {
           if( $scope.nextable ) {
             var paging = $scope.$eval(ngModel);
             if( paging ) paging.go($scope.curr + 1);
           }
         };
+        
         $scope.prev = function() {
           if( $scope.prevable ) {
             var paging = $scope.$eval(ngModel);
             if( paging ) paging.go($scope.curr - 1);
           }
         };
+        
         $scope.go = function(index) {
           if( index < 1 ) index = 1;
           var paging = $scope.$eval(ngModel);
           if( paging ) paging.go(index);
         };
-      
+        
         $scope.$watch(ngModel, function(value) {
           render();
         });
-      
+        
         render();
       }
     };
