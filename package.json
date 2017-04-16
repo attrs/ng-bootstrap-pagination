@@ -2,7 +2,7 @@
   "name": "ng-bootstrap-pagination",
   "version": "0.1.1",
   "description": "angularjs bootstrap pagination",
-  "main": "pagination.js",
+  "main": "lib/pagination.js",
   "repository": "attrs/ng-bootstrap-pagination",
   "author": "joje <joje.attrs@gmail.com>",
   "homepage": "https://github.com/attrs/ng-bootstrap-pagination",
@@ -15,7 +15,7 @@
     "bootstrap"
   ],
   "files": [
-    "*.js",
+    "lib",
     "LICENSE",
     "README.md"
   ],
