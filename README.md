@@ -9,13 +9,28 @@ $ npm install ng-bootstrap-pagination --save
 ## Usage
 ```javascript
 var angular = require('angular');
-var pagination = require('ng-bootstrap-pagination');
+require('ng-bootstrap-pagination').tpl('template html').defaults({
+  showFirst: true,
+  showLast: true,
+  showPrev: true,
+  showNext: true,
+  showPrevSet: true,
+  showNextSet: true,
+  firstText: '«',
+  prevText: '‹',
+  nextText: '›',
+  lastText: '»',
+  prevSetText: '...',
+  nextSetText: '...',
+  setCount: 5
+});;
 
-angular.module('app', []).directive('pagination', pagination());
+angular.module('app', ['ngBootstrapPagination']);
 ```
 
 ```html
-<pagination ng-model="paging" set-count="5"></pagination>
+<pagination ng-model="paging"></pagination>
+<pagination ng-model="paging" set-count="10" first-text="«" prev-text="‹" next-text="›" last-text="»" prev-set-text="..." next-set-text="..." show-first="true" show-last="true" show-prev-set="true" show-next-set="true" show-prev="false" show-next="false"></pagination>
 ```
 
 ```javascript
@@ -42,33 +57,3 @@ angular.module('app').controller('list', ['$scope', function($scope) {
 }]);
 ```
 
-
-## Options
-```javascript
-angular.module('app', []).directive('pagination', pagination({
-    tpl: '<nav>\
-    <ul class="pagination mv0">\
-      <li ng-class="prevable ? \'\' : \'disabled\'">\
-        <a href="" aria-label="Previous" ng-click="prev()">\
-          <span aria-hidden="true">&laquo;</span>\
-        </a>\
-      </li>\
-      <li ng-class="page.active ? \'active\' : \'\'" ng-repeat="page in pages track by $index">\
-        <a href="" ng-click="go(page.page)">{{page.page}}</a>\
-      </li>\
-      <li ng-class="nextable ? \'\' : \'disabled\'">\
-        <a href="" aria-label="Next" ng-click="next()">\
-          <span aria-hidden="true">&raquo;</span>\
-        </a>\
-      </li>\
-    </ul>\
-  </nav>',
-  defaultModel: 'paging',
-  defaultSetCount: 10
-}));
-```
-
-- Options
-    - tpl : template markup / String (Optional)
-    - defaultModel : default model name / String (Optional) / default : paging
-    - defaultSetCount : default display page amount at once / Number (Optional) / default : 10
