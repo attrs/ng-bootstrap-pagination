@@ -1,12 +1,12 @@
 <ul class="pagination mv0">
   <li ng-if="showFirst" class="pagination-first" ng-class="prevable ? '' : 'disabled'">
     <a href aria-label="Previous" ng-click="first()">
-      <span aria-hidden="true">{{txt_first || 'First'}}</span>
+      <span aria-hidden="true" ng-bind-html="(txt_first || 'First') | unsafe"></span>
     </a>
   </li>
   <li ng-if="showPrev" class="pagination-prev" ng-class="prevable ? '' : 'disabled'">
     <a href aria-label="Previous" ng-click="prev()">
-      <span aria-hidden="true">{{txt_prev || 'Previous'}}</span>
+      <span aria-hidden="true" ng-bind-html="(txt_prev || 'Previous') | unsafe"></span>
     </a>
   </li>
   
@@ -17,7 +17,7 @@
   </li>
   <li ng-if="showPrevSet" class="pagination-prevset">
     <a href aria-label="..." ng-click="prevset()">
-      <span aria-hidden="true">{{txt_prevset || '...'}}</span>
+      <span aria-hidden="true" ng-bind-html="(txt_prevset || '...') | unsafe"></span>
     </a>
   </li>
   
@@ -27,7 +27,7 @@
   
   <li ng-if="showNextSet" class="pagination-nextset">
     <a href aria-label="..." ng-click="nextset()">
-      <span aria-hidden="true">{{txt_nextset || '...'}}</span>
+      <span aria-hidden="true" ng-bind-html="(txt_nextset || '...') | unsafe"></span>
     </a>
   </li>
   <li ng-if="showNextSet" class="pagination-nextset">
@@ -39,12 +39,12 @@
   
   <li ng-if="showNext" class="pagination-next" ng-class="nextable ? '' : 'disabled'">
     <a href aria-label="Next" ng-click="next()">
-      <span aria-hidden="true">{{txt_next || 'Next'}}</span>
+      <span aria-hidden="true" ng-bind-html="(txt_next || 'Next') | unsafe"></span>
     </a>
   </li>
   <li ng-if="showLast" class="pagination-last" ng-class="nextable ? '' : 'disabled'">
     <a href aria-label="Last" ng-click="last()">
-      <span aria-hidden="true">{{txt_last || 'Last'}}</span>
+      <span aria-hidden="true" ng-bind-html="(txt_last || 'Last') | unsafe"></span>
     </a>
   </li>
 </ul>
